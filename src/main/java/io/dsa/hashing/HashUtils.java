@@ -9,5 +9,12 @@ public class HashUtils {
 
         return sum % MOD;
     }
-
+    public static int addAllDigits(int sum) {
+        int result = 0;
+        while (sum > 0) {
+            result += sum % 10;
+            sum = sum/10;
+        }
+        return result;
+    }
 }
