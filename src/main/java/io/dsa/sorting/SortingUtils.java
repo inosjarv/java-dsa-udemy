@@ -3,6 +3,8 @@ package io.dsa.sorting;
 import io.dsa.Colors;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 import static io.dsa.Colors.*;
 
@@ -17,5 +19,11 @@ public class SortingUtils {
 
     public static void printArr(int[] arr) {
         System.out.println(GREEN + Arrays.toString(arr) + Colors.RESET);
+    }
+
+    public static int[] randomNumbersArr(int limit) {
+        return IntStream.generate(() -> new Random().nextInt(100))
+                .limit(limit)
+                .toArray();
     }
 }

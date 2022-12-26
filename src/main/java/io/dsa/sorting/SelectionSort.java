@@ -1,7 +1,6 @@
 package io.dsa.sorting;
 
-import static io.dsa.sorting.SortingUtils.printArr;
-import static io.dsa.sorting.SortingUtils.swap;
+import static io.dsa.sorting.SortingUtils.*;
 
 public class SelectionSort {
     public static void selectionSort(int[] arr) {
@@ -20,7 +19,7 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {10, 34, 11, 56, 11, 1, 32};
+        int[] arr = randomNumbersArr(20);
         selectionSort(arr);
         printArr(arr);
     }

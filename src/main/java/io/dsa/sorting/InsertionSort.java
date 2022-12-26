@@ -1,11 +1,14 @@
 package io.dsa.sorting;
 
+import java.util.Arrays;
+
 import static io.dsa.sorting.SortingUtils.*;
 
 public class InsertionSort {
 
     public static void main(String[] args) {
-        int[] arr = {10, 34, 11, 56, 11, 1, 32};
+        int[] arr = randomNumbersArr(20);
+        printArr(arr);
         insertionSort(arr);
         printArr(arr);
     }
