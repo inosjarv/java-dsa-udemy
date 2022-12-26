@@ -126,7 +126,7 @@ public class GraphAdjacencyMatrix {
         return sb.toString();
     }
 
-    public static GraphAdjacencyMatrix graphBuilder() {
+    private static GraphAdjacencyMatrix graphBuilder() {
         List<GraphNode> nodeList = new ArrayList<>();
         nodeList.add(new GraphNode("A", 0));
         nodeList.add(new GraphNode("B", 1));

@@ -110,7 +110,7 @@ public class GraphAdjacencyList {
         return s.toString();
     }
 
-    public static GraphAdjacencyList graphBuilder() {
+    private static GraphAdjacencyList graphBuilder() {
         List<GraphNode> nodeList = new ArrayList<>();
         nodeList.add(new GraphNode("A", 0));
         nodeList.add(new GraphNode("B", 1));
