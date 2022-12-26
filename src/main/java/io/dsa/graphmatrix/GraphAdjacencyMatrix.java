@@ -1,12 +1,8 @@
 package io.dsa.graphmatrix;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-import static io.dsa.Colors.GREEN;
-import static io.dsa.Colors.colorPrint;
+import static io.dsa.Colors.*;
 
 class GraphNode {
     String name;
@@ -16,6 +12,11 @@ class GraphNode {
     GraphNode(String name, int index) {
         this.name = name;
         this.index = index;
+    }
+
+    @Override
+    public String toString() {
+        return "GraphNode[" + "name='" + name + '\'' + ", index=" + index + ", isVisited=" + isVisited + ']';
     }
 }
 
@@ -46,7 +47,8 @@ public class GraphAdjacencyMatrix {
 
         System.out.println(graph);
 
-        graph.bfs();
+//        graph.bfs();
+        graph.dfs();
     }
 
     public void addUndirectedEdge(int i, int j) {
@@ -54,9 +56,8 @@ public class GraphAdjacencyMatrix {
     }
 
     public void bfs() {
-        for (GraphNode node: nodeList) {
-            if (!node.isVisited)
-                bfs(node);
+        for (GraphNode node : nodeList) {
+            if (!node.isVisited) bfs(node);
         }
         System.out.println();
     }
@@ -72,9 +73,36 @@ public class GraphAdjacencyMatrix {
 
             List<GraphNode> neighbors = getNeighbors(currentNode);
 
-            for (GraphNode neighbor: neighbors) {
+            for (GraphNode neighbor : neighbors) {
                 if (!neighbor.isVisited) {
                     queue.add(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
+    }
+
+    public void dfs() {
+        for (GraphNode node : nodeList) {
+            if (!node.isVisited) dfs(node);
+        }
+        System.out.println();
+    }
+
+    private void dfs(GraphNode node) {
+        Stack<GraphNode> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            GraphNode currentNode = stack.pop();
+            currentNode.isVisited = true;
+            colorPrint(currentNode.name + " ", BLUE);
+
+            List<GraphNode> neighbors = getNeighbors(currentNode);
+
+            for (GraphNode neighbor : neighbors) {
+                if (!neighbor.isVisited) {
+                    stack.push(neighbor);
                     neighbor.isVisited = true;
                 }
             }
@@ -86,8 +114,7 @@ public class GraphAdjacencyMatrix {
         int nodeIndex = node.index;
 
         for (int i = 0; i < adjacencyMatrix.length; i++) {
-            if (adjacencyMatrix[nodeIndex][i] == 1)
-                neighbors.add(nodeList.get(i));
+            if (adjacencyMatrix[nodeIndex][i] == 1) neighbors.add(nodeList.get(i));
         }
 
         return neighbors;

@@ -1,12 +1,8 @@
 package io.dsa.graphlist;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-import static io.dsa.Colors.GREEN;
-import static io.dsa.Colors.colorPrint;
+import static io.dsa.Colors.*;
 
 class GraphNode {
     String name;
@@ -46,7 +42,8 @@ public class GraphAdjacencyList {
 
         System.out.println(graph);
 
-        graph.bfs();
+//        graph.bfs();
+        graph.dfs();
     }
 
     public void addUndirectedEdge(int i, int j) {
@@ -55,6 +52,58 @@ public class GraphAdjacencyList {
 
         first.neighbors.add(second);
         second.neighbors.add(first);
+    }
+
+    public void bfs() {
+        for (GraphNode node : nodeList)
+            if (!node.isVisited) bfs(node);
+
+        System.out.println();
+    }
+
+    private void bfs(GraphNode node) {
+        Queue<GraphNode> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            GraphNode currentNode = queue.poll();
+            currentNode.isVisited = true;
+            colorPrint(currentNode.name + " ", GREEN);
+
+            for (GraphNode neighbor : currentNode.neighbors) {
+                if (!neighbor.isVisited) {
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
+    }
+
+    public void dfs() {
+        for (GraphNode node : nodeList) {
+            if (!node.isVisited) dfs(node);
+        }
+        System.out.println();
+    }
+
+    private void dfs(GraphNode node) {
+        Stack<GraphNode> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            GraphNode currentNode = stack.pop();
+            currentNode.isVisited = true;
+            colorPrint(currentNode.name + " ", BLUE);
+
+            List<GraphNode> neighbors = currentNode.neighbors;
+
+            for (GraphNode neighbor : neighbors) {
+                if (!neighbor.isVisited) {
+                    stack.push(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
     }
 
     @Override
@@ -74,29 +123,4 @@ public class GraphAdjacencyList {
         return s.toString();
     }
 
-    public void bfs() {
-        for (GraphNode node: nodeList)
-            if (!node.isVisited)
-                bfs(node);
-
-        System.out.println();
-    }
-
-    private void bfs(GraphNode node) {
-        Queue<GraphNode> queue = new LinkedList<>();
-        queue.add(node);
-
-        while (!queue.isEmpty()) {
-            GraphNode currentNode = queue.poll();
-            currentNode.isVisited = true;
-            colorPrint(currentNode.name + " ", GREEN);
-
-            for (GraphNode neighbor: currentNode.neighbors) {
-                if (!neighbor.isVisited) {
-                    queue.add(neighbor);
-                    neighbor.isVisited = true;
-                }
-            }
-        }
-    }
 }
