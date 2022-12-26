@@ -1,8 +1,8 @@
 package io.dsa.stack;
 
+import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.List;
-import java.util.ArrayList;
 
 class StackNode {
     public StackNode above;
@@ -13,11 +13,12 @@ class StackNode {
         this.value = value;
     }
 }
+
 class Stack {
-    private int capacity;
     public StackNode top;
     public StackNode bottom;
     public int size = 0;
+    private final int capacity;
 
     public Stack(int capacity) {
         this.capacity = capacity;
@@ -58,12 +59,28 @@ class Stack {
         return b.value;
     }
 }
+
 public class StackOfPlates {
-    List<Stack> stacks = new ArrayList<>();
     public int capacity;
+    List<Stack> stacks = new ArrayList<>();
 
     public StackOfPlates(int capacity) {
         this.capacity = capacity;
+    }
+
+    public static void main(String[] args) {
+        StackOfPlates stackOfPlates = new StackOfPlates(3);
+        stackOfPlates.push(10);
+        stackOfPlates.push(20);
+        stackOfPlates.push(30);
+        stackOfPlates.push(40);
+        stackOfPlates.push(50);
+        stackOfPlates.push(60);
+        stackOfPlates.push(70);
+
+        System.out.println(stackOfPlates.pop());
+        System.out.println(stackOfPlates.pop());
+
     }
 
     public Stack getLastStack() {
@@ -107,20 +124,5 @@ public class StackOfPlates {
 
     public int popAt(int index) {
         return leftShift(index, true);
-    }
-
-    public static void main(String[] args) {
-        StackOfPlates stackOfPlates = new StackOfPlates(3);
-        stackOfPlates.push(10);
-        stackOfPlates.push(20);
-        stackOfPlates.push(30);
-        stackOfPlates.push(40);
-        stackOfPlates.push(50);
-        stackOfPlates.push(60);
-        stackOfPlates.push(70);
-
-        System.out.println(stackOfPlates.pop());
-        System.out.println(stackOfPlates.pop());
-
     }
 }

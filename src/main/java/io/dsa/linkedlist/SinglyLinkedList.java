@@ -107,7 +107,6 @@ public class SinglyLinkedList {
     public void delete(int location) {
         if (head == null) {
             System.out.println("LinkedList is Empty!!");
-            return;
         } else if (location == 0) {
             head = head.next;
             size--;

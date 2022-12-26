@@ -1,6 +1,14 @@
 package io.dsa.stack;
 
 public class StackArray {
+    int[] arr;
+    int top;
+    public StackArray(int size) {
+        this.arr = new int[size];
+        top = -1;
+        System.out.println("Stack is Created with Size of: " + size);
+    }
+
     public static void main(String[] args) {
         StackArray stackArray = new StackArray(5);
         System.out.println("Is Stack Empty? : " + stackArray.isEmpty());
@@ -18,16 +26,6 @@ public class StackArray {
 
         stackArray.delete();
         System.out.println(stackArray.peek());
-    }
-
-
-    int[] arr;
-    int top;
-
-    public StackArray(int size) {
-        this.arr = new int[size];
-        top = -1;
-        System.out.println("Stack is Created with Size of: " + size);
     }
 
     public boolean isEmpty() {

@@ -30,6 +30,7 @@ public class QuadraticProbing {
         quadraticProbing.search("tiger");
         quadraticProbing.displayHashTable();
     }
+
     public double getLoadFactor() {
         return usedCellNumber * 1.0 / hashTable.length;
     }

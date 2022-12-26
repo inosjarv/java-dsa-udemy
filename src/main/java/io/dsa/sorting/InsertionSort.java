@@ -1,8 +1,7 @@
 package io.dsa.sorting;
 
-import java.util.Arrays;
-
-import static io.dsa.sorting.SortingUtils.*;
+import static io.dsa.sorting.SortingUtils.printArr;
+import static io.dsa.sorting.SortingUtils.randomNumbersArr;
 
 public class InsertionSort {
 

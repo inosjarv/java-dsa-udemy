@@ -3,6 +3,13 @@ package io.dsa.queue;
 import io.dsa.linkedlist.SinglyLinkedList;
 
 public class QueueLinkedList {
+    SinglyLinkedList linkedList;
+
+    public QueueLinkedList() {
+        linkedList = new SinglyLinkedList();
+        System.out.println("Queue is Created Successfully");
+    }
+
     public static void main(String[] args) {
         QueueLinkedList queue = new QueueLinkedList();
         System.out.println(queue.isEmpty());
@@ -18,12 +25,6 @@ public class QueueLinkedList {
         }
 
         System.out.println(queue.isEmpty());
-    }
-    SinglyLinkedList linkedList;
-
-    public QueueLinkedList() {
-        linkedList = new SinglyLinkedList();
-        System.out.println("Queue is Created Successfully");
     }
 
     public boolean isEmpty() {

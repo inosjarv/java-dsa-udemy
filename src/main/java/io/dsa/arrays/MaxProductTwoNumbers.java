@@ -4,7 +4,7 @@ public class MaxProductTwoNumbers {
     public int maxProduct(int[] arr) {
         int first = 0, second = 0;
 
-        for (int num: arr) {
+        for (int num : arr) {
             if (num > first) {
                 second = first;
                 first = num;

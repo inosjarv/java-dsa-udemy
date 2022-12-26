@@ -5,7 +5,9 @@ public class DoublyNode {
     public DoublyNode prev;
     public DoublyNode next;
 
-    public DoublyNode() {}
+    public DoublyNode() {
+    }
+
     public DoublyNode(int value) {
         this.value = value;
     }

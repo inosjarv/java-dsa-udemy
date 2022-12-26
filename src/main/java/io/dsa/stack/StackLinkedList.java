@@ -4,6 +4,12 @@ package io.dsa.stack;
 import io.dsa.linkedlist.SinglyLinkedList;
 
 public class StackLinkedList {
+    SinglyLinkedList linkedList;
+
+    public StackLinkedList() {
+        linkedList = new SinglyLinkedList();
+    }
+
     public static void main(String[] args) {
         StackLinkedList stack = new StackLinkedList();
 
@@ -21,12 +27,6 @@ public class StackLinkedList {
         System.out.println(stack.isEmpty());
     }
 
-    SinglyLinkedList linkedList;
-
-    public StackLinkedList() {
-        linkedList = new SinglyLinkedList();
-    }
-
     public void push(int value) {
         linkedList.insert(value, 0);
         System.out.println("Inserted " + value + " Successfully!");
@@ -40,8 +40,7 @@ public class StackLinkedList {
         int result = -1;
         if (isEmpty()) {
             System.out.println("The Stack is Empty!!");
-        }
-        else {
+        } else {
             result = linkedList.head.value;
             linkedList.delete(0);
         }

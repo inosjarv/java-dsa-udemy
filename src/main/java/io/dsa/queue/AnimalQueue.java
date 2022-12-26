@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 abstract class Animal {
-    private int order;
     protected String name;
+    private int order;
 
     public Animal(String name) {
         this.name = name;
@@ -13,12 +13,12 @@ abstract class Animal {
 
     abstract String name();
 
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
     public int getOrder() {
         return this.order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     public boolean isOlderThan(Animal other) {
@@ -77,6 +77,7 @@ public class AnimalQueue {
     public Dog peekDogs() {
         return dogs.peek();
     }
+
     public Cat dequeueCats() {
         return cats.poll();
     }

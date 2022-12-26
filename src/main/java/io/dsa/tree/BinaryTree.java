@@ -3,7 +3,7 @@ package io.dsa.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class BinaryNode{
+class BinaryNode {
     public BinaryNode left;
     public String value;
     public BinaryNode right;
@@ -20,11 +20,60 @@ class BinaryNode{
                 '}';
     }
 }
+
 public class BinaryTree {
     BinaryNode root;
 
     public BinaryTree() {
         root = null;
+    }
+
+    public static BinaryTree buildBinaryTree(int numberOfNodes) {
+        BinaryTree binaryTree = new BinaryTree();
+        for (int i = 1; i <= numberOfNodes; i++) {
+            binaryTree.insert("N" + i);
+
+        }
+        return binaryTree;
+    }
+
+    public static void main(String[] args) {
+        BinaryTree binaryTree = buildBinaryTree(9);
+        System.out.println("======== Inserted All Nodes ============");
+        System.out.println("\n======================================");
+        testMethods(binaryTree);
+    }
+
+    public static void testMethods(BinaryTree binaryTree) {
+        System.out.println("Preorder Traversal");
+        binaryTree.preorder(binaryTree.root);
+        System.out.println("\n======================================");
+
+        System.out.println("InOrder Traversal");
+        binaryTree.inorder(binaryTree.root);
+        System.out.println("\n======================================");
+
+        System.out.println("Postorder Traversal");
+        binaryTree.postorder(binaryTree.root);
+        System.out.println("\n======================================");
+
+        System.out.println("Level Order Traversal");
+        binaryTree.levelOrder();
+        System.out.println("\n======================================");
+
+        System.out.println("Searching...");
+        binaryTree.search("N5");
+        binaryTree.search("N10");
+        System.out.println("\n======================================");
+
+        System.out.println("Deepest Node");
+        System.out.println(binaryTree.getDeepestNode());
+        System.out.println("\n======================================");
+
+        binaryTree.levelOrder();
+        System.out.println();
+        binaryTree.deleteNode("N3");
+        binaryTree.levelOrder();
     }
 
     public void preorder(BinaryNode node) {
@@ -107,16 +156,6 @@ public class BinaryTree {
         }
     }
 
-    public static BinaryTree buildBinaryTree(int numberOfNodes) {
-        BinaryTree binaryTree = new BinaryTree();
-        for (int i = 1; i <= numberOfNodes; i++) {
-            binaryTree.insert("N" + i);
-
-        }
-        return binaryTree;
-    }
-
-
     public BinaryNode getDeepestNode() {
         Queue<BinaryNode> queue = new LinkedList<>();
         queue.add(root);
@@ -174,44 +213,5 @@ public class BinaryTree {
     public void deleteBinaryTree() {
         this.root = null;
         System.out.println("BinaryTree Deleted!!");
-    }
-
-    public static void main(String[] args) {
-        BinaryTree binaryTree = buildBinaryTree(9);
-        System.out.println("======== Inserted All Nodes ============");
-        System.out.println("\n======================================");
-        testMethods(binaryTree);
-    }
-
-    public static void testMethods(BinaryTree binaryTree) {
-        System.out.println("Preorder Traversal");
-        binaryTree.preorder(binaryTree.root);
-        System.out.println("\n======================================");
-
-        System.out.println("InOrder Traversal");
-        binaryTree.inorder(binaryTree.root);
-        System.out.println("\n======================================");
-
-        System.out.println("Postorder Traversal");
-        binaryTree.postorder(binaryTree.root);
-        System.out.println("\n======================================");
-
-        System.out.println("Level Order Traversal");
-        binaryTree.levelOrder();
-        System.out.println("\n======================================");
-
-        System.out.println("Searching...");
-        binaryTree.search("N5");
-        binaryTree.search("N10");
-        System.out.println("\n======================================");
-
-        System.out.println("Deepest Node");
-        System.out.println(binaryTree.getDeepestNode());
-        System.out.println("\n======================================");
-
-        binaryTree.levelOrder();
-        System.out.println();
-        binaryTree.deleteNode("N3");
-        binaryTree.levelOrder();
     }
 }

@@ -2,6 +2,10 @@ package io.dsa.linkedlist;
 
 public class CircularLinkedList {
 
+    public Node head;
+    public Node tail;
+    public int size;
+
     public static void main(String[] args) {
         CircularLinkedList csll = new CircularLinkedList();
 
@@ -28,11 +32,6 @@ public class CircularLinkedList {
         csll.search(20);
         csll.search(45634);
     }
-
-
-    public Node head;
-    public Node tail;
-    public int size;
 
     public Node createCircularLL(int value) {
         Node node = new Node(value);
@@ -104,7 +103,6 @@ public class CircularLinkedList {
     public void delete(int location) {
         if (head == null) {
             System.out.println("LinkedList is Empty!!");
-            return;
         } else if (location == 0) {
             head = head.next;
             tail.next = head;

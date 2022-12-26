@@ -1,6 +1,10 @@
 package io.dsa.linkedlist;
 
 public class CircularDoublyLinkedList {
+    public DoublyNode head;
+    public DoublyNode tail;
+    public int size;
+
     public static void main(String[] args) {
         CircularDoublyLinkedList cdll = new CircularDoublyLinkedList();
         cdll.insert(10, 0);
@@ -27,10 +31,6 @@ public class CircularDoublyLinkedList {
         cdll.deleteCDLL();
         cdll.traverse();
     }
-
-    public DoublyNode head;
-    public DoublyNode tail;
-    public int size;
 
     public DoublyNode createCircularDLL(int value) {
         DoublyNode node = new DoublyNode(value);
@@ -76,13 +76,12 @@ public class CircularDoublyLinkedList {
     public void traverse() {
         if (head == null) {
             System.out.println("LinkedList is Empty!!");
-            return;
         } else {
             DoublyNode tmp = head;
             for (int i = 0; i < size; i++) {
                 System.out.print(tmp.value);
 
-                if (i != size-1) {
+                if (i != size - 1) {
                     System.out.print(" -> ");
                 }
                 tmp = tmp.next;
@@ -94,7 +93,6 @@ public class CircularDoublyLinkedList {
     public void reverseTraversal() {
         if (head == null) {
             System.out.println("LinkedList is Empty!!");
-            return;
         } else {
             DoublyNode tmp = tail;
             for (int i = 0; i < size; i++) {
@@ -129,8 +127,7 @@ public class CircularDoublyLinkedList {
 
     public void delete(int location) {
         if (head == null) {
-            System.out.printf("LinkedList is Empty!!");
-            return;
+            System.out.print("LinkedList is Empty!!");
         } else if (location == 0) {
             if (size == 1) {
                 head.prev = null;
@@ -148,7 +145,6 @@ public class CircularDoublyLinkedList {
                 head.next = null;
                 head = tail = null;
                 size--;
-                return;
             } else {
                 tail = tail.prev;
                 tail.next = head;
@@ -169,7 +165,7 @@ public class CircularDoublyLinkedList {
 
     public void deleteCDLL() {
         DoublyNode tempNode = head;
-        for (int i=0; i<size; i++) {
+        for (int i = 0; i < size; i++) {
             tempNode.prev = null;
             tempNode = tempNode.next;
         }

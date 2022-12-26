@@ -1,22 +1,22 @@
 package io.dsa.stack;
 
 public class MinStack {
-    private class Node {
-        private int value;
-        private Node next;
-
-        public Node(int value, Node next) {
-            this.value = value;
-            this.next = next;
-        }
-    }
-
     Node top;
     Node min;
-
     public MinStack() {
         top = null;
         min = null;
+    }
+
+    public static void main(String[] args) {
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.getMin()); // return -3
+        System.out.println(minStack.pop());
+        System.out.println(minStack.top());    // return 0
+        System.out.println(minStack.getMin()); // return -2
     }
 
     public int getMin() {
@@ -45,14 +45,13 @@ public class MinStack {
         return this.top.value;
     }
 
-    public static void main(String[] args) {
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        System.out.println(minStack.getMin()); // return -3
-        System.out.println(minStack.pop());
-        System.out.println(minStack.top());    // return 0
-        System.out.println(minStack.getMin()); // return -2
+    private class Node {
+        private final int value;
+        private final Node next;
+
+        public Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
     }
 }

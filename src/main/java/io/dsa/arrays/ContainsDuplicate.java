@@ -7,7 +7,7 @@ public class ContainsDuplicate {
     public boolean isUnique(int[] arr) {
         Set<Integer> set = new HashSet<>();
 
-        for (int num: arr) {
+        for (int num : arr) {
             if (!set.add(num)) return true;
         }
 

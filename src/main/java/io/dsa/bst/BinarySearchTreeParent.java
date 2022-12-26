@@ -6,10 +6,15 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import static io.dsa.Colors.*;
-import static io.dsa.Colors.colorPrint;
 
 public abstract class BinarySearchTreeParent {
     public BinaryNode root;
+
+    public static BinaryNode minimumNode(BinaryNode root) {
+        if (root.left == null) return root;
+        else return minimumNode(root.left);
+    }
+
     public void preorder(BinaryNode node) {
         if (node == null) return;
 
@@ -69,11 +74,6 @@ public abstract class BinarySearchTreeParent {
     public void deleteTree() {
         root = null;
         colorPrintln("Tree Deleted!!", RED);
-    }
-
-    public static BinaryNode minimumNode(BinaryNode root) {
-        if (root.left == null) return root;
-        else return minimumNode(root.left);
     }
 
     abstract void insert(int value);

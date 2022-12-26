@@ -2,6 +2,10 @@ package io.dsa.linkedlist;
 
 public class DoublyLinkedList {
 
+    public DoublyNode head;
+    public DoublyNode tail;
+    public int size;
+
     public static void main(String[] args) {
         DoublyLinkedList dll = new DoublyLinkedList();
 
@@ -31,10 +35,6 @@ public class DoublyLinkedList {
         dll.traverse();
     }
 
-    public DoublyNode head;
-    public DoublyNode tail;
-    public int size;
-
     public boolean createDoublyLL(int value) {
         DoublyNode node = new DoublyNode(value);
         node.next = node.prev = null;
@@ -45,7 +45,7 @@ public class DoublyLinkedList {
 
     public void insert(int value, int location) {
         DoublyNode node = new DoublyNode(value);
-        
+
         if (head == null) {
             createDoublyLL(value);
             return;
@@ -76,13 +76,12 @@ public class DoublyLinkedList {
     public void traverse() {
         if (head == null) {
             System.out.println("LinkedList is Empty!!");
-            return;
         } else {
             DoublyNode tmp = head;
             for (int i = 0; i < size; i++) {
                 System.out.print(tmp.value);
 
-                if (i != size-1) {
+                if (i != size - 1) {
                     System.out.print(" -> ");
                 }
                 tmp = tmp.next;
@@ -94,7 +93,6 @@ public class DoublyLinkedList {
     public void reverseTraversal() {
         if (head == null) {
             System.out.println("LinkedList is Empty!!");
-            return;
         } else {
             DoublyNode tmp = tail;
             for (int i = 0; i < size; i++) {
@@ -130,12 +128,10 @@ public class DoublyLinkedList {
     public void delete(int location) {
         if (head == null) {
             System.out.println("LinkedList is Empty!!");
-            return;
         } else if (location == 0) {
             if (size == 1) {
                 head = tail = null;
                 size--;
-                return;
             } else {
                 head = head.next;
                 head.prev = null;
@@ -146,7 +142,6 @@ public class DoublyLinkedList {
             if (size == 1) {
                 head = tail = null;
                 size--;
-                return;
             } else {
                 tmp.next = null;
                 tail = tmp;
@@ -162,7 +157,7 @@ public class DoublyLinkedList {
             size--;
         }
     }
-    
+
     public void deleteDLL() {
         DoublyNode tmp = head;
         for (int i = 0; i < size; i++) {

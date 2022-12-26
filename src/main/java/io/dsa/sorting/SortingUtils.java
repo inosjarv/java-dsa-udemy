@@ -6,10 +6,11 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static io.dsa.Colors.*;
+import static io.dsa.Colors.GREEN;
 
 public class SortingUtils {
-    private SortingUtils(){}
+    private SortingUtils() {
+    }
 
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];

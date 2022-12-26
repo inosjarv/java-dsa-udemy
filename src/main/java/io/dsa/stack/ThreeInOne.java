@@ -1,10 +1,10 @@
 package io.dsa.stack;
 
 public class ThreeInOne {
-    private int numberOfStacks = 3;
-    private int stackCapacity;
-    private int[] values;
-    private int[] sizes;
+    private final int numberOfStacks = 3;
+    private final int stackCapacity;
+    private final int[] values;
+    private final int[] sizes;
 
     public ThreeInOne(int stackSize) {
         stackCapacity = stackSize;
@@ -32,7 +32,7 @@ public class ThreeInOne {
         } else {
             sizes[stackNum]++;
             values[indexOfTop(stackNum)] = value;
-            System.out.println("Inserted Value " +  value + " in stack: " + stackNum);
+            System.out.println("Inserted Value " + value + " in stack: " + stackNum);
         }
 
     }

@@ -1,7 +1,5 @@
 package io.dsa.binaryheap;
 
-import io.dsa.Colors;
-
 import static io.dsa.Colors.*;
 
 public class BinaryHeap {
