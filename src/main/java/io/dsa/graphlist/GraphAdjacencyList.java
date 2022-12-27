@@ -40,6 +40,13 @@ public class GraphAdjacencyList {
         graph3.bfsForSSSPPP(graph3.nodeList.get(0));
     }
 
+    private static void pathPrint(GraphNode node) {
+        if (node.parent != null) {
+            pathPrint(node.parent);
+        }
+        colorPrint(node.name + " ", CYAN);
+    }
+
     public void addUndirectedEdge(int i, int j) {
         GraphNode first = nodeList.get(i);
         GraphNode second = nodeList.get(j);
@@ -110,20 +117,17 @@ public class GraphAdjacencyList {
     public void topologicalSort() {
         Stack<GraphNode> stack = new Stack<>();
         for (GraphNode node : nodeList) {
-            if (!node.isVisited)
-                topologicalVisit(node, stack);
+            if (!node.isVisited) topologicalVisit(node, stack);
         }
 
-        while (!stack.isEmpty())
-            colorPrint(stack.pop().name + " ", RED);
+        while (!stack.isEmpty()) colorPrint(stack.pop().name + " ", RED);
 
         System.out.println();
     }
 
     private void topologicalVisit(GraphNode node, Stack<GraphNode> stack) {
         for (GraphNode neighbor : node.neighbors) {
-            if (!neighbor.isVisited)
-                topologicalVisit(neighbor, stack);
+            if (!neighbor.isVisited) topologicalVisit(neighbor, stack);
         }
 
         node.isVisited = true;
@@ -150,13 +154,6 @@ public class GraphAdjacencyList {
             }
             System.out.println();
         }
-    }
-
-    private static void pathPrint(GraphNode node) {
-        if (node.parent != null) {
-            pathPrint(node.parent);
-        }
-        colorPrint(node.name + " ", CYAN);
     }
 
     @Override

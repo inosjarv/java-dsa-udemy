@@ -46,6 +46,13 @@ public class GraphAdjacencyMatrix {
         graph3.bfsForSSSPPP(graph3.nodeList.get(3));
     }
 
+    private static void pathPrint(GraphNode node) {
+        if (node.parent != null) {
+            pathPrint(node.parent);
+        }
+        colorPrint(node.name + " ", CYAN);
+    }
+
     public void addUndirectedEdge(int i, int j) {
         adjacencyMatrix[i][j] = adjacencyMatrix[j][i] = 1;
     }
@@ -169,14 +176,6 @@ public class GraphAdjacencyMatrix {
             System.out.println();
         }
     }
-
-    private static void pathPrint(GraphNode node) {
-        if (node.parent != null) {
-            pathPrint(node.parent);
-        }
-        colorPrint(node.name + " ", CYAN);
-    }
-
 
     private void topologicalVisit(GraphNode node, Stack<GraphNode> stack) {
         for (GraphNode neighbor : getNeighbors(node)) {
