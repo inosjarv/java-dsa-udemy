@@ -9,6 +9,7 @@ class GraphNode {
     String name;
     int index;
     boolean isVisited;
+    GraphNode parent;
 
     GraphNode(String name, int index) {
         this.name = name;
@@ -40,6 +41,9 @@ public class GraphAdjacencyMatrix {
 
         GraphAdjacencyMatrix graph2 = directedGraphBuilder();
         graph2.topologicalSort();
+
+        GraphAdjacencyMatrix graph3 = undirectedGraphBuilder2();
+        graph3.bfsForSSSPPP(graph3.nodeList.get(3));
     }
 
     public void addUndirectedEdge(int i, int j) {
@@ -141,7 +145,38 @@ public class GraphAdjacencyMatrix {
         }
 
         while (!stack.isEmpty()) colorPrint(stack.pop().name + " ", RED);
+        System.out.println();
     }
+
+    public void bfsForSSSPPP(GraphNode node) {
+        Queue<GraphNode> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            GraphNode currentNode = queue.poll();
+            currentNode.isVisited = true;
+
+            colorPrint("Printing path for node " + currentNode.name + ": ", YELLOW);
+            pathPrint(currentNode);
+
+            for (GraphNode neighbor : getNeighbors(currentNode)) {
+                if (!neighbor.isVisited) {
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                    neighbor.parent = currentNode;
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    private static void pathPrint(GraphNode node) {
+        if (node.parent != null) {
+            pathPrint(node.parent);
+        }
+        colorPrint(node.name + " ", CYAN);
+    }
+
 
     private void topologicalVisit(GraphNode node, Stack<GraphNode> stack) {
         for (GraphNode neighbor : getNeighbors(node)) {
