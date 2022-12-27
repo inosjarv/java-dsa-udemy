@@ -27,4 +27,22 @@ public class WeightedGraphBuilder {
         graph.addWeightedEdge(5, 6, 7); // F -> 7 -> G
         return graph;
     }
+
+    public static WeightedGraph buildWeightedGraph2() {
+        List<WeightedNode> nodeList = new ArrayList<>();
+        nodeList.add(new WeightedNode("A", 0));
+        nodeList.add(new WeightedNode("B", 1));
+        nodeList.add(new WeightedNode("C", 2));
+        nodeList.add(new WeightedNode("D", 3));
+
+        WeightedGraph graph = new WeightedGraph(nodeList);
+        graph.addWeightedEdge(0, 1, 8);
+        graph.addWeightedEdge(0, 3, 1);
+        graph.addWeightedEdge(1, 2, 1);
+        graph.addWeightedEdge(2, 0, 4);
+        graph.addWeightedEdge(3, 1, 2);
+        graph.addWeightedEdge(3, 2, 9);
+
+        return graph;
+    }
 }

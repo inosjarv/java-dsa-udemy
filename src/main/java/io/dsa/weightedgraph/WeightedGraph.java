@@ -20,6 +20,11 @@ public class WeightedGraph {
         colorPrintln("\nBellmen-Ford\n", YELLOW);
         WeightedGraph weightedGraph1 = WeightedGraphBuilder.buildWeightedGraph();
         weightedGraph1.bellmanFord(weightedGraph1.nodeList.get(0));
+
+        colorPrintln("\nFloyd Warshall\n", YELLOW);
+
+        WeightedGraph weightedGraph2 = WeightedGraphBuilder.buildWeightedGraph2();
+        weightedGraph2.floydWarshall();
     }
 
     private static void pathPrint(WeightedNode node) {
@@ -95,6 +100,41 @@ public class WeightedGraph {
             colorPrint("Node " + nodeToCheck + ", distance: " + nodeToCheck.distance + ", Path: ", CYAN);
             pathPrint(nodeToCheck);
             System.out.println();
+        }
+    }
+
+    public void floydWarshall() {
+        int size = nodeList.size();
+        int[][] V = new int[size][size];
+
+        for (int i = 0; i < size; i++) {
+            WeightedNode first = nodeList.get(i);
+
+            for (int j = 0; j < size; j++) {
+                WeightedNode second = nodeList.get(j);
+
+                if (i == j) {
+                    V[i][j] = 0;
+                } else {
+                    V[i][j] = first.weightMap.getOrDefault(second, Integer.MAX_VALUE / 10);
+                }
+
+            }
+        }
+
+        for (int k = 0; k < size; k++) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    if (V[i][j] > V[i][k] + V[k][j]) V[i][j] = V[i][k] + V[k][j];
+                }
+            }
+        }
+
+        for (int i = 0; i < size; i++) {
+            colorPrintln("Printing distance list for node " + nodeList.get(i) + " ", GREEN);
+            for (int j = 0; j < size; j++) {
+                colorPrint(V[i][j] + " ", GREEN);
+            }
         }
     }
 }
