@@ -1,5 +1,7 @@
 package io.dsa.weightedgraph;
 
+import io.dsa.disjointset.DisjointSet;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +15,12 @@ public class WeightedNode implements Comparable<WeightedNode> {
     public WeightedNode parent;
     public int distance;
     public int index;
+    public DisjointSet set;
+
+    public WeightedNode(String name) {
+        this.name = name;
+        this.distance = Integer.MAX_VALUE;
+    }
 
     public WeightedNode(String name, int index) {
         this.name = name;

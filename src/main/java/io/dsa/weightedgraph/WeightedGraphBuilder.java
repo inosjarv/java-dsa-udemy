@@ -6,13 +6,13 @@ import java.util.List;
 public class WeightedGraphBuilder {
     public static WeightedGraph buildWeightedGraph() {
         List<WeightedNode> nodeList = new ArrayList<>();
-        nodeList.add(new WeightedNode("A", 0));
-        nodeList.add(new WeightedNode("B", 1));
-        nodeList.add(new WeightedNode("C", 2));
-        nodeList.add(new WeightedNode("D", 3));
-        nodeList.add(new WeightedNode("E", 4));
-        nodeList.add(new WeightedNode("F", 5));
-        nodeList.add(new WeightedNode("G", 6));
+        nodeList.add(new WeightedNodeBuilder().setName("A").setIndex(0).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("B").setIndex(1).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("C").setIndex(2).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("D").setIndex(3).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("E").setIndex(4).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("F").setIndex(5).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("G").setIndex(6).createWeightedNode());
 
 
         WeightedGraph graph = new WeightedGraph(nodeList);
@@ -30,10 +30,10 @@ public class WeightedGraphBuilder {
 
     public static WeightedGraph buildWeightedGraph2() {
         List<WeightedNode> nodeList = new ArrayList<>();
-        nodeList.add(new WeightedNode("A", 0));
-        nodeList.add(new WeightedNode("B", 1));
-        nodeList.add(new WeightedNode("C", 2));
-        nodeList.add(new WeightedNode("D", 3));
+        nodeList.add(new WeightedNodeBuilder().setName("A").setIndex(0).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("B").setIndex(1).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("C").setIndex(2).createWeightedNode());
+        nodeList.add(new WeightedNodeBuilder().setName("D").setIndex(3).createWeightedNode());
 
         WeightedGraph graph = new WeightedGraph(nodeList);
         graph.addWeightedEdge(0, 1, 8);
