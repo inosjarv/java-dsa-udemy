@@ -3,6 +3,7 @@ package io.dsa.stack;
 public class MinStack {
     Node top;
     Node min;
+
     public MinStack() {
         top = null;
         min = null;

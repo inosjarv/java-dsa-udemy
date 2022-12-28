@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-record Activity(String name, int startTime, int finishTime) {}
+record Activity(String name, int startTime, int finishTime) {
+}
 
 public class ActivitySelection {
     public static void main(String[] args) {

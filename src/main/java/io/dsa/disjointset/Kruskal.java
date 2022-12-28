@@ -2,7 +2,9 @@ package io.dsa.disjointset;
 
 import io.dsa.weightedgraph.WeightedNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import static io.dsa.Colors.*;
 
@@ -54,7 +56,7 @@ public class Kruskal {
         edgeList.sort(Comparator.comparingInt(edge -> edge.weight));
 
         int cost = 0;
-        for (UndirectedEdge edge: edgeList) {
+        for (UndirectedEdge edge : edgeList) {
             WeightedNode first = edge.first;
             WeightedNode second = edge.second;
 

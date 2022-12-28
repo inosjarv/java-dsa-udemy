@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 enum State {
-    Unvisited, Visited, Visiting;
+    Unvisited, Visited, Visiting
 }
 
 class GraphNode {
@@ -26,7 +26,7 @@ class GraphNode {
 
     @Override
     public String toString() {
-        return  this.name;
+        return this.name;
     }
 }
 
@@ -71,7 +71,7 @@ public class Graph {
             GraphNode current = queue.poll();
 
             if (current != null) {
-                for (GraphNode neighbor: current.neighbors) {
+                for (GraphNode neighbor : current.neighbors) {
                     if (neighbor.state == State.Unvisited) {
                         if (neighbor == end) return true;
                         else {

@@ -3,6 +3,7 @@ package io.dsa.stack;
 public class StackArray {
     int[] arr;
     int top;
+
     public StackArray(int size) {
         this.arr = new int[size];
         top = -1;

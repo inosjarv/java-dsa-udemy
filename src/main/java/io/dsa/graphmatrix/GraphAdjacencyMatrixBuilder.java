@@ -3,7 +3,7 @@ package io.dsa.graphmatrix;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphAdjacencyMatrixBuilder{
+public class GraphAdjacencyMatrixBuilder {
     public static GraphAdjacencyMatrix undirectedGraphBuilder() {
         List<GraphNode> nodeList = new ArrayList<>();
         nodeList.add(new GraphNode("A", 0));

@@ -2,7 +2,7 @@ package io.dsa.disjointset;
 
 import io.dsa.weightedgraph.WeightedNode;
 
-public class UndirectedEdge{
+public class UndirectedEdge {
     public WeightedNode first;
     public WeightedNode second;
     public int weight;

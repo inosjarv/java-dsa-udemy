@@ -15,10 +15,10 @@ class StackNode {
 }
 
 class Stack {
+    private final int capacity;
     public StackNode top;
     public StackNode bottom;
     public int size = 0;
-    private final int capacity;
 
     public Stack(int capacity) {
         this.capacity = capacity;
